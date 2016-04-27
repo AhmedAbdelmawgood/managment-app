@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+
+  get 'tasks/index'
+  get '/report' => 'dashboard#report', as: 'report' 
+  root 'dashboard#index'
+  devise_for :users,  :controllers => { registrations: 'registrations' }
+  resources :missions do 
+    resources :tasks 
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

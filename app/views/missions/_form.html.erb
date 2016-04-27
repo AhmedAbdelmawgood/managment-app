@@ -1,0 +1,33 @@
+<%=form_for @mission do |f|%>
+	<div class="alert">
+		
+	<%if @mission.errors.any? %>
+		<ul>
+		<%@mission.errors.full_messages.each do |msg|%>
+			<li><%=msg%></li>
+		<%end%>
+		</ul>
+	<%end%>
+	</div>
+	<div class="form-group">
+		<%=f.label 'Name'%>
+		<%=f.text_field :name, class:'form-control'%>
+	</div>
+	<div class="form-group">
+		<%=f.label 'Begin Date'%>
+		<%=f.date_field :begin_date, class:'form-control'%>
+	</div>
+	<div class="form-group">
+		<%=f.label 'End Date'%>
+		<%=f.date_field :deadline, class:'form-control'%>
+	</div>
+	<div class="form-group">
+		<%=f.label 'Description'%>
+		<%=f.text_area :description, class:'form-control'%>
+	</div>
+	<div class="form-group">
+		<%=f.label 'Priority'%>
+		<%=f.number_field :priority, class:'form-control'%>
+	</div>
+	<%=f.submit 'Create Mission', class:'btn btn-success'%>
+<%end%>

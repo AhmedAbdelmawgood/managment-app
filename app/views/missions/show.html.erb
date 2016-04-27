@@ -1,0 +1,29 @@
+<div class="row mission-page">
+	<div class="col-md-3 col-lg-3 pull-right new-task-button">
+		<%=link_to 'Creaet Task', new_mission_task_path(@mission), class:'btn btn-primary'%>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1 style-box">
+		<%=@mission.description%>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
+		
+		<table class="table table-striped cust-table">
+			<thead>
+				<td>Task number</td>
+				<td>Task title</td>
+				<td>Task Accomplishment</td>
+			</thead>
+			<tbody class="table-hover">
+				<%counter = 1%>
+				<%@mission.tasks.each do |task|%>
+				<tr>
+					<td><%=counter%></td>
+					<td><%=task.title%></td>
+					<td><%=task.accomplished%></td>
+				</tr>
+				<%counter += 1%>
+				<%end%>
+			</tbody>
+		</table>
+	</div>
+</div>

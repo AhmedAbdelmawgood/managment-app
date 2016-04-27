@@ -11,12 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426084758) do
+ActiveRecord::Schema.define(version: 20160426111330) do
+
+  create_table "missions", force: :cascade do |t|
+    t.string   "name"
+    t.date     "begin_date"
+    t.date     "deadline"
+    t.integer  "profile_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.text     "description"
+    t.boolean  "accomplished", default: false
+    t.integer  "priority"
+  end
+
+  add_index "missions", ["profile_id"], name: "index_missions_on_profile_id", unique: true
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "mission_id"
+    t.string   "title"
+    t.boolean  "accomplished", default: false, null: false
+    t.text     "description"
+    t.integer  "priority"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "users", force: :cascade do |t|

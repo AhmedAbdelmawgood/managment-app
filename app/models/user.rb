@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile
   has_many :missions, through: :profile
+  validates :name,:age, presence: true
+  validates :age, inclusion: {in:(14..80)} 
 end
