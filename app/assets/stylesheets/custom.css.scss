@@ -56,3 +56,40 @@ body{
 	margin-top:-60px;
 	margin-bottom:50px;;
 }
+/*Pillar for missions*/
+.mission-board{
+	margin-top:50px;
+}
+.pillar{
+	border-radius:15px;
+	border:1px groove #2B51FF; 
+	padding:0px;
+	margin:40px;
+	.title{
+		a{
+			text-decoration:none;
+			color:#fff;
+			// padding:10px;
+		}
+		border-bottom:1px solid #2B51FF;
+		padding:10px;
+		border-top-left-radius:15px;
+		border-top-right-radius:15px;
+		background-color:#2B51FF;
+		color:white;
+		font-size:23px;
+		font-style:serif;
+	}
+}
+.false{
+	background-image:image-url('wrong.jpg');
+	background-size:20px 20px;
+	background-repeat:no-repeat;
+	background-position:center 7px;
+}
+.right{
+	background-image:image-url('right.png');
+	background-size:20px 20px;
+	background-repeat:no-repeat;
+	background-position:center 7px;
+}

@@ -1,6 +1,6 @@
 class MissionsController < ApplicationController
 	def index 
-
+		@missions = current_user.missions.all.order(:accomplished)
 	end
 	
 	def new 
@@ -9,7 +9,8 @@ class MissionsController < ApplicationController
 	
 	def create
 		@mission = Mission.create(mission_params)
-		@mission.profile_id = current_user.profile.id
+								@mission.profile_id = current_user.profile.id
+
 		if @mission.save 
 			flash[:success] = 'Mission created'
 			redirect_to mission_path(@mission)
@@ -24,15 +25,23 @@ class MissionsController < ApplicationController
 		unless @mission
 			flash[:danger] = 'No such mission'
 			redirect_to root_path
-		end 
+		end
 	end
 
 	def edit 
-	
+		@mission = mission.find(params[:id])
 	end 
 	
 	def update 
-	
+		@mission = mission.find(params[:id])
+		@mission.update_attribute(mission_params)
+		if @mission.save 
+			flash[:success] = 'Mission updated'
+			redirect_to @mission 
+		else
+			flash.now[:error] = "Error occuered while updating"
+			render :edit
+		end
 	end
 
 	def delete

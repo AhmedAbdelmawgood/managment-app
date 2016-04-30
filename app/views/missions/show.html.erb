@@ -9,17 +9,17 @@
 		
 		<table class="table table-striped cust-table">
 			<thead>
-				<td>Task number</td>
-				<td>Task title</td>
 				<td>Task Accomplishment</td>
+				<td colspan='6'>Task title</td>
+				<td>Task number</td>
 			</thead>
 			<tbody class="table-hover">
 				<%counter = 1%>
 				<%@mission.tasks.each do |task|%>
 				<tr>
-					<td><%=counter%></td>
-					<td><%=task.title%></td>
 					<td><%=task.accomplished%></td>
+					<td colspan='6'><%=link_to "#{task.title}", mission_task_path(@mission,task)%></td>
+					<td><%=counter%></td>
 				</tr>
 				<%counter += 1%>
 				<%end%>

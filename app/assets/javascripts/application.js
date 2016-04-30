@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+$(document).on('page:load',function(){
+	$("td:contains('false')").html('').addClass('false');
+	$("td:contains('true')").html('').addClass('true');	
+});
+$(function(){
+	$("td:contains('false')").html('').addClass('false');
+	$("td:contains('true')").html('').addClass('true');	
+
+})

@@ -1,0 +1,28 @@
+<div class="row">
+<table class="table">
+	<thead>
+		<tr>
+			<td>Name</td>
+			<td>Begin Date</td>
+			<td>End Date</td>
+			<td>Description</td>
+			<td>Accomplished</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @missions.each do |mission|%>
+		<tr>
+			<td><%=link_to mission.name, mission_path(mission)%> </td>
+			<td> <%=mission.begin_date%> </td>
+			<td>
+				<%=mission.deadline%>
+			</td>
+			<td><%=mission.description%> </td>
+			<td class="<%=mission.accomplished ? false : true%>"> <%=mission.accomplished%> </td>
+		</tr>
+		<%end%>
+	</tbody>
+	
+</table>	
+
+</div>

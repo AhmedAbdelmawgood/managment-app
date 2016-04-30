@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 20160426111330) do
     t.integer  "priority"
   end
 
-  add_index "missions", ["profile_id"], name: "index_missions_on_profile_id", unique: true
-
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
