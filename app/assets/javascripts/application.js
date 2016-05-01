@@ -24,3 +24,14 @@ $(function(){
 	$("td:contains('true')").html('').addClass('true');	
 
 })
+$(function(){
+	$("td:contains('')").on('click', function(e){
+		title = $(this).prev().text();
+		$.ajax({
+			url:'/task-toggling',
+			type:'post',
+			data:{title: title}
+		})
+	});
+
+})

@@ -1,15 +1,27 @@
 <div class="row mission-page">
-	<div class="col-md-3 col-lg-3 pull-right new-task-button">
+	<div class="col-md-3 col-lg-3 col-lg-offset-5 col-md-offset-5 new-task-button">
 		<%=link_to 'Creaet Task', new_mission_task_path(@mission), class:'btn btn-primary'%>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-md-3 col-lg-3">
+		<div class="box-show missions">
+			<%=link_to "#{@mission.users.count} Members", mission_new_users_path(@mission)%>
+		</div>
+	</div>
+	<div class="col-md-3 col-lg-3">
+		<div class="box-show task">
+			<%=link_to "#{@mission.tasks.count} Task", new_mission_task_path(@mission)%>
+		</div>
 	</div>
 	<div class="col-md-3 col-lg-3">
 		<div class="box-show">
-			<span><%=@mission.users.count%> Memebers</span>
+			<%=link_to "#{@mission.tasks.count} Task", mission_new_users_path(@mission)%>
 		</div>
 	</div>
-	<div class="col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1 style-box">
+	<div class="col-lg-5 col-md-5 col-sm-12 pull-right style-box">
 		<%=@mission.description%>
 	</div>
+	<div class="clearfix"></div>
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
 		
 		<table class="table table-striped cust-table">

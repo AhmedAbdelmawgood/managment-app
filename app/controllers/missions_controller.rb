@@ -22,7 +22,7 @@ class MissionsController < ApplicationController
 	end
 	
 	def show
-		@mission = current_user.mission_collection.select {|mis| mis.id = params[:id]}
+		@mission = current_user.missions.find(params[:id])
 		unless @mission
 			flash[:danger] = 'No such mission'
 			redirect_to root_path
@@ -30,11 +30,11 @@ class MissionsController < ApplicationController
 	end
 
 	def edit 
-		@mission = mission.find(params[:id])
+		@mission = Mission.find(params[:id])
 	end 
 	
 	def update 
-		@mission = mission.find(params[:id])
+		@mission = Mission.find(params[:id])
 		@mission.update_attribute(mission_params)
 		if @mission.save 
 			flash[:success] = 'Mission updated'
@@ -48,6 +48,26 @@ class MissionsController < ApplicationController
 	def delete
 	
 	end 
+	def new_users
+
+	end
+	def add_users
+		@mission = Mission.find(params[:id])
+		if current_user == @mission.admin 
+			new_user = User.find_by(email: params[:new_users]['email'])
+			if new_user
+				@mission.users << new_user 
+				redirect_to mission_path(@mission)
+			else
+				flash.now[:danger] = "user doesn't exist"
+				render :new_users
+			end
+
+		else
+			flash[:danger] = "Sorry you don't have permission to add users to this mission"
+			redirect_to root_path
+		end
+	end
 	private 
 	
 	def mission_params

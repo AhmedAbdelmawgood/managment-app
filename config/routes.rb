@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :tasks 
   end
   get 'dashboard/show' => 'dashboard#show'
-  
-
+  get 'missions/:id/add-users' => 'missions#new_users', as: 'mission_new_users'  
+  post 'missions/:id/add-users' => 'missions#add_users', as:'mission_add_users'
+  post 'task-toggling' => 'tasks#accomplished'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

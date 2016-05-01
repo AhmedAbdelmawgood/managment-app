@@ -6,21 +6,31 @@
 	height:150px;
 	position:relative;
 	border-radius: 15%;
-	background-image: url('user.png');
 	background-size: 60px 60px;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: #4C8BFF;
+	margin:10px;
+	
+}
+.missions{
+		background-image: image-url('custom.png');
+
+}
+.task{
+		background-image: image-url('task.png');
 }
 .box-show:hover{
 	background-color: rgba(10,96,255,.9);
 	cursor: pointer;
 }
-.box-show span{
+.box-show a{
 	position:absolute;
 	bottom:4px;
 	text-indent: 1.2em;
 	font-family: serif;
 	font-size:16px;
+	color:#fff;
+	text-decoration:none;
 
 }

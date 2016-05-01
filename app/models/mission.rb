@@ -1,9 +1,10 @@
 class Mission < ActiveRecord::Base
 	attr_accessor :admin
 	scope :accomplished, -> (state) {where accomplished:state}
+	before_save :add_users
 	belongs_to :profile
 	has_many :tasks
-	has_many :users
+	has_and_belongs_to_many :users, through: :missions_users
 	# has_and_belongs_to_many :users
 	## validation
 	validates :profile, presence: true
@@ -15,7 +16,9 @@ class Mission < ActiveRecord::Base
 		end
 	end
 	def admin
-		self.admin = Profile.find(profile_id).user
+		@admin ||= Profile.find(profile_id).user
 	end
-
+	def add_users
+		self.users << (self.profile.user)
+	end
 end

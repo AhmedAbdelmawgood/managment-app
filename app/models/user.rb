@@ -6,13 +6,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile
-  has_many :missions
-  has_many :users
+  has_and_belongs_to_many :missions
   ## validation
   validates :name,:age, presence: true
   validates :age, inclusion: {in:(14..80)} 
   def create_profile 
-  	Profile.create(user_id: self.id)
+  	puts 'LOL', id
+  	Profile.new(user_id: id).save
   end
   def missions_collection
   	result = self.profile.missions.all

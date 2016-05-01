@@ -28,7 +28,13 @@ class TasksController < ApplicationController
   end
   def show 
   end
-
+  def accomplished
+    @task = Task.find_by(title: params[:title])
+    @task.accomplished = !@task.accomplished if @task
+    respond_to do |format|
+      format.js
+    end
+  end
   private
   def white_params
   	params.require(:task).permit(:title, :description, :priority)
