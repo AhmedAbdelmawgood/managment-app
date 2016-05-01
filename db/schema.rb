@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426111330) do
+ActiveRecord::Schema.define(version: 20160430201114) do
 
   create_table "missions", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20160426111330) do
     t.text     "description"
     t.boolean  "accomplished", default: false
     t.integer  "priority"
+  end
+
+  create_table "missions_users", force: :cascade do |t|
+    t.integer "mission_id"
+    t.integer "user_id"
   end
 
   create_table "profiles", force: :cascade do |t|

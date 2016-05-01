@@ -1,3 +1,26 @@
 // Place all the styles related to the missions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box-show{
+	width: 150px;
+	height:150px;
+	position:relative;
+	border-radius: 15%;
+	background-image: url('user.png');
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #4C8BFF;
+}
+.box-show:hover{
+	background-color: rgba(10,96,255,.9);
+	cursor: pointer;
+}
+.box-show span{
+	position:absolute;
+	bottom:4px;
+	text-indent: 1.2em;
+	font-family: serif;
+	font-size:16px;
+
+}

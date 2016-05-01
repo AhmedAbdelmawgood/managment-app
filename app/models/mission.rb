@@ -3,12 +3,14 @@ class Mission < ActiveRecord::Base
 	scope :accomplished, -> (state) {where accomplished:state}
 	belongs_to :profile
 	has_many :tasks
+	has_many :users
 	# has_and_belongs_to_many :users
-	validates :name, :begin_date, :deadline, :profile_id,:priority, presence: true
+	## validation
+	validates :profile, presence: true
+	validates :name, :begin_date, :deadline,:priority, presence: true
 	validate :the_begin_date_is_before_end_date
-	validates :profile_id, uniqueness: false
 	def the_begin_date_is_before_end_date
-		if begin_date > deadline
+		if begin_date && deadline && begin_date > deadline #validate date "has a bug if the user enter one date only"
 			errors.add(begin_date: 'Beginning date cannot be after deadline')
 		end
 	end

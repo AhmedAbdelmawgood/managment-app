@@ -1,6 +1,6 @@
 class MissionsController < ApplicationController
 	def index 
-		@missions = current_user.missions.all.order(:accomplished)
+		@missions = current_user.missions_collection
 	end
 	
 	def new 
@@ -9,19 +9,20 @@ class MissionsController < ApplicationController
 	
 	def create
 		@mission = Mission.create(mission_params)
-								@mission.profile_id = current_user.profile.id
-
-		if @mission.save 
+		@mission.profile_id = current_user.profile.id
+		if @mission.save
+			@mission.users << (current_user) 
+			@mission.admin
 			flash[:success] = 'Mission created'
 			redirect_to mission_path(@mission)
 		else
-			flash[:danger] = 'some field detects Errors pls fix them first'
+			flash[:danger] = 'some field has Errors pls fix them first'
 			render :new 
 		end
 	end
 	
 	def show
-		@mission = current_user.missions.find_by(id:params[:id])
+		@mission = current_user.mission_collection.select {|mis| mis.id = params[:id]}
 		unless @mission
 			flash[:danger] = 'No such mission'
 			redirect_to root_path
