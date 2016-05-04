@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'missions/:id/add-users' => 'missions#new_users', as: 'mission_new_users'  
   post 'missions/:id/add-users' => 'missions#add_users', as:'mission_add_users'
   post 'task-toggling' => 'tasks#accomplished'
+  post 'dashboard/handler' => "dashboard#handler"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

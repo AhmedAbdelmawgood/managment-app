@@ -1,3 +1,47 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.image{
+	width:250px;
+	height:250px;
+}
+.account{
+	margin:30px auto 50px auto;
+	font-size:22px;
+}
+#remote-body{
+	margin-top:50px;
+	height:400px;
+	.side{
+		height:400px;
+		background-color:gray;
+	}
+	.main-content{
+		height:400px;
+	}
+}
+/*Missions*/
+.missions{
+	.new-mission{
+		margin-top:30px;
+		margin-bottom:30px;
+
+	}
+	.missions-list{
+		
+	}
+	table{
+		font-size:20px;
+		font-family: serif;
+		tbody{
+			font-size:18;
+		}
+	}
+
+}
+/*end*/
+/*tasks*/
+.tasks{
+	margin-top:90px;
+}
+/*end*/

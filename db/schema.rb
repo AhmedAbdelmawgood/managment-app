@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430201114) do
+ActiveRecord::Schema.define(version: 20160504172820) do
 
   create_table "missions", force: :cascade do |t|
     t.string   "name"
     t.date     "begin_date"
-    t.date     "deadline"
-    t.integer  "profile_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.date     "end_date"
     t.text     "description"
+    t.integer  "profile_id"
     t.boolean  "accomplished", default: false
     t.integer  "priority"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "missions_users", force: :cascade do |t|
@@ -32,12 +32,14 @@ ActiveRecord::Schema.define(version: 20160430201114) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
+    t.text     "user_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "mission_id"
+    t.integer  "user_id"
     t.string   "title"
     t.boolean  "accomplished", default: false, null: false
     t.text     "description"
@@ -45,6 +47,9 @@ ActiveRecord::Schema.define(version: 20160430201114) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
+
+  add_index "tasks", ["mission_id"], name: "index_tasks_on_mission_id"
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160430201114) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
@@ -25,13 +26,18 @@ $(function(){
 
 })
 $(function(){
-	$("td:contains('')").on('click', function(e){
-		title = $(this).prev().text();
-		$.ajax({
+	$("td.accom").on('click', function(e){
+		id = $(this).data('id');
+		var elem = this
+ 		$.ajax({
 			url:'/task-toggling',
 			type:'post',
-			data:{title: title}
+			data:{id: id},
+			success:function (data) { $(elem).toggleClass('false true')},
+			error: function(){
+				$(this).html("May be another time");
+			}
+
 		})
 	});
-
 })

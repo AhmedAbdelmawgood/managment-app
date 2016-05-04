@@ -1,0 +1,42 @@
+
+var content = '<div class="missions">	\
+<div class=" col-lg-2 col-md-2 col-lg-offset-5 col-md-offset-5 new-mission">\
+	<%=link_to "New Missions", new_mission_path, class:"btn btn-success"%>\
+</div>\
+<div class="missions-list col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">\
+	<table class="table table-striped table-bordered">\
+		<thead>\
+			<tr>\
+				<td>Num</td>\
+				<td>Done?</td>\
+				<td>Name</td>\
+				<td>Admin</td>\
+				<td>Begin Date</td>\
+				<td>Deadline</td>\
+			</tr>\
+		</thead>\
+		<tbody>\
+			<% counter = 1%>\
+			<%@missions.each do |miss|%>\
+				<tr>\
+					<td><%=counter%></td>\
+					<td>\
+						<input type="checkbox"name="done">\
+					</td>\
+					<td><%=link_to miss.name, mission_path(miss)%> </td>\
+					<td><%=miss.admin.name%></td>\
+					<td><%=miss.begin_date%> </td>\
+					<td><%=miss.end_date%> </td>\
+				</tr>\
+				<%counter +=1%>\
+			<%end%>\
+		</tbody>\
+	</table>\
+</div>\
+</div>\
+';
+
+
+$("#remote-body").html(content);
+$("li.active").removeClass("active");
+$("li:contains('Missions')").addClass("active");

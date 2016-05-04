@@ -5,10 +5,9 @@ body{
 }
 .container-cust{
 	background-color:white;
-	width:980px;
 }
-.page-body{
-	min-height:400px;
+.page-height{
+	min-height:600px;
 }
 .custom-nav-style{
 	padding:0px;
@@ -44,7 +43,7 @@ body{
 	border:1px groove green;
 	box-shadow:-8px 8px 30px gray;
 	padding:10px;
-	margin:20px;
+	margin-top:70px;
 	// padding-bottom:10px;
 }
 .mission-page{
@@ -88,9 +87,15 @@ body{
 	background-repeat:no-repeat;
 	background-position:center 7px;
 }
-.right{
+.true{
 	background-image:image-url('right.png');
 	background-size:20px 20px;
 	background-repeat:no-repeat;
 	background-position:center 7px;
+}
+.alert-alert{
+	@extend .alert-danger;
+}
+.alert-notice{
+	@extend .alert-success;
 }

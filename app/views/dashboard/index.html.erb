@@ -1,31 +1,149 @@
-<div class="row">
-	<div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-4 col-md-offset-4 text-center">
-		<%=link_to 'Create Mission', new_mission_path, class:'btn btn-primary'%>
-	</div>
-	
-
-	<div class="col-lg-12 col-md-12 col-sm-12 mission-board">
-		<%@missions.each do |mis|%>
-			<div class="pillar col-lg-3 col-md-3 col-sm-6">
-				<div class="title">	
-				<%=link_to mis.name, mission_path(mis)%>
-				</div>
-				<div class="body">
-					<table class="table">
-					<th>Task Name</th>
-					<th>Accomplished?</th>
-					<tbody>
-						
-					<%mis.tasks.each do |task| %>
-						<tr>
-							<td><%=link_to task.title, mission_task_path(mis, task)%></td>
-							<td><%=task.accomplished%></td>
-						</tr>
-					<%end%>
-					</tbody>	
-					</table>
-				</div>	
-			</div>
-		<%end%>
+<div class="row account">
+	<div class="col-lg-12 col-md-12">
+		<div class="profile col-lg-6 col-md-6">
+			<%if image = current_user.profile.user_image %>
+				<%=image_tag image, class:'image'%>
+			<%else%>
+				<%=image_tag 'default_user.jpeg', class:'image'%>
+			<%end%>
+		</div>
+		<div class="basic-info col-lg-6 col-md-6">
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td><%=current_user.name%></td>
+					</tr>
+					<tr>
+						<td><%=current_user.age%></td>
+					</tr>
+					<tr>
+						<td><%=current_user.email%></td>
+					</tr>
+					<tr>
+						<td><%=current_user.gender%> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
+<div class="row">
+	
+	<div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
+		<ul class="nav nav-pills nav-justified">
+			<li class="active"><%=link_to 'Missions', "#{dashboard_handler_path}?request=missions", remote: true, method: "post"%></li>
+			<li><%=link_to 'Tasks', "#{dashboard_handler_path}?request=tasks", remote: true, method: "post"%></li>
+			<li><%=link_to 'Contact', "#{dashboard_handler_path}?request=contact", remote: true, method: "post"%></li>
+			<li><%=link_to 'Payment', "#{dashboard_handler_path}?request=payment", remote: true, method: "post"%></li>
+		</ul>
+	</div>
+	<div id="remote-body">
+		<div class="col-lg-2 col-md-2 side"></div>
+		<div class="col-lg-10 col-md-10 main-content">		
+	</div>
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

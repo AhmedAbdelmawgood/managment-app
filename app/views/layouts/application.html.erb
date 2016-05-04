@@ -4,17 +4,18 @@
   <title>ProjectX</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%=render 'layouts/header'%>
-<div class="container container-cust page-body">
+<div class="container container-cust page-height">
 	<%flash.each do |key, value|%>
 		<%= content_tag('div',value,class: "alert alert-#{key}")%>
 	<%end%>
 <%= yield %>
-<%=render 'layouts/footer'%>
 </div>
+<%=render 'layouts/footer'%>
 
 </body>
 </html>

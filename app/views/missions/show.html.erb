@@ -1,27 +1,35 @@
-<div class="row mission-page">
+<div class="row">
 	<div class="col-md-3 col-lg-3 col-lg-offset-5 col-md-offset-5 new-task-button">
 		<%=link_to 'Creaet Task', new_mission_task_path(@mission), class:'btn btn-primary'%>
 	</div>
-	<div class="clearfix"></div>
-	<div class="col-md-3 col-lg-3">
+</div>
+<div class="row" >
+	
+	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 		<div class="box-show missions">
 			<%=link_to "#{@mission.users.count} Members", mission_new_users_path(@mission)%>
 		</div>
 	</div>
-	<div class="col-md-3 col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 		<div class="box-show task">
 			<%=link_to "#{@mission.tasks.count} Task", new_mission_task_path(@mission)%>
 		</div>
 	</div>
-	<div class="col-md-3 col-lg-3">
+	<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 		<div class="box-show">
 			<%=link_to "#{@mission.tasks.count} Task", mission_new_users_path(@mission)%>
 		</div>
 	</div>
-	<div class="col-lg-5 col-md-5 col-sm-12 pull-right style-box">
-		<%=@mission.description%>
+</div>	
+
+<div class="row">		
+	<div class="chart col-lg-7 col-md-7 col-sm-12 col-xs-12">
+		<%=pie_chart @graph%>
 	</div>
-	<div class="clearfix"></div>
+
+	<div class="col-lg-5 col-md-5 col-sm-12 style-box">
+		 <%=@mission.description%>	
+	</div>
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
 		
 		<table class="table table-striped cust-table">
@@ -34,7 +42,7 @@
 				<%counter = 1%>
 				<%@mission.tasks.each do |task|%>
 				<tr>
-					<td><%=task.accomplished%></td>
+					<td class="accom" data-id="<%=task.id%>"><%=task.accomplished%></td>
 					<td colspan='6'><%=link_to "#{task.title}", mission_task_path(@mission,task)%></td>
 					<td><%=counter%></td>
 				</tr>
@@ -42,5 +50,7 @@
 				<%end%>
 			</tbody>
 		</table>
+	</div>
+	<div class="col-lg-12 col-md-12">
 	</div>
 </div>

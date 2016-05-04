@@ -1,0 +1,9 @@
+first_user:
+  name: 'Ahmed Samir Abdelmawgood'
+  age: 19
+  email: "Mody.ahmed@gmail.com"
+  password: rootadmit
+second_user:
+  name: mody abou elfotoh
+  email: mod.ad@gmail.com
+  password: ThisIsSecret

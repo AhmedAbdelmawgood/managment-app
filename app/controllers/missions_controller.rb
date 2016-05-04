@@ -2,7 +2,6 @@ class MissionsController < ApplicationController
 	def index 
 		@missions = current_user.missions_collection
 	end
-	
 	def new 
 		@mission = Mission.new 
 	end
@@ -11,7 +10,6 @@ class MissionsController < ApplicationController
 		@mission = Mission.create(mission_params)
 		@mission.profile_id = current_user.profile.id
 		if @mission.save
-			@mission.users << (current_user) 
 			@mission.admin
 			flash[:success] = 'Mission created'
 			redirect_to mission_path(@mission)
@@ -22,11 +20,15 @@ class MissionsController < ApplicationController
 	end
 	
 	def show
-		@mission = current_user.missions.find(params[:id])
+		@mission = current_user.missions.find(params[:id])		
 		unless @mission
 			flash[:danger] = 'No such mission'
 			redirect_to root_path
+			return false
 		end
+		falsy = @mission.tasks.select {|task| task.accomplished == false}.count 
+    	truthy = @mission.tasks.select {|task| task.accomplished== true}.count 
+    	@graph = [["not completed",falsy], ['completed', truthy]]
 	end
 
 	def edit 
@@ -56,7 +58,8 @@ class MissionsController < ApplicationController
 		if current_user == @mission.admin 
 			new_user = User.find_by(email: params[:new_users]['email'])
 			if new_user
-				@mission.users << new_user 
+				@mission.users << new_user
+				@mission.unify	 
 				redirect_to mission_path(@mission)
 			else
 				flash.now[:danger] = "user doesn't exist"
@@ -71,6 +74,6 @@ class MissionsController < ApplicationController
 	private 
 	
 	def mission_params
-		params.require(:mission).permit(:name, :begin_date, :deadline, :description, :priority)
+		params.require(:mission).permit(:name, :begin_date, :end_date, :description, :priority)
 	end
 end

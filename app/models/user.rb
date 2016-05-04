@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile
   has_and_belongs_to_many :missions
+  has_many :tasks, through: :missions
   ## validation
   validates :name,:age, presence: true
   validates :age, inclusion: {in:(14..80)} 
@@ -19,3 +20,4 @@ class User < ActiveRecord::Base
   	result += self.missions.all
   end
 end
+ 

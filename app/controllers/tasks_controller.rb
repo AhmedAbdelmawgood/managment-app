@@ -29,10 +29,15 @@ class TasksController < ApplicationController
   def show 
   end
   def accomplished
-    @task = Task.find_by(title: params[:title])
-    @task.accomplished = !@task.accomplished if @task
-    respond_to do |format|
-      format.js
+    @task = Task.find_by(id: params[:id])
+    
+    if @task && @task.update_attributes(accomplished: !@task.accomplished) 
+      
+      respond_to do |format|
+        format.js
+      end
+    else 
+      render status: 404   
     end
   end
   private
