@@ -1,0 +1,33 @@
+
+var content = '<div class="outer-box">	\
+<div class=" col-lg-2 col-md-2 col-lg-offset-5 col-md-offset-5 new-mission">\
+	<%=form_tag "contact/add-user", remote: true do %>\
+		<div class="form-group">\
+			<%=label_tag "New User"%>\
+			<%=email_field_tag "email",nil, class: "form-control", id:"new-user"%>\
+		</div>\
+		<%=submit_tag "Add User", class:"btn btn-success"%>\
+	<%end%>
+</div>\
+<div class="missions-list col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">\
+	<table class="table table-striped table-bordered">\
+		<tbody>\
+			<% counter = 1%>\
+			<%@contacts.each do |contact|%>\
+				<tr>\
+					<td><%=counter%></td>\
+					<td><%=contact.user_name%></td>\
+					<td><%=contact.user_email%> </td>\
+					<td><%=image_tag contact.user_image%> </td>\
+				</tr>\
+				<%counter +=1%>\
+			<%end%>\
+		</tbody>\
+	</table>\
+</div>\
+</div>\
+';
+
+$("#remote-body").html(content);
+$("li.active").removeClass("active");
+$("li:contains('Contact')").addClass("active");

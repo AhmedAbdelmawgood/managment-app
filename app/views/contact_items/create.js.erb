@@ -1,0 +1,9 @@
+var content = "\
+<tr>\
+	<td><%=current_user.contact_items.count%></td>\
+	<td><%=@contact.user_name%></td>\
+	<td><%=@contact.user_email%> </td>\
+	<td><img src='<%= @contact.user_image%>'></td>\
+</tr>\
+";
+$(".missions-list .table tbody").append(content)

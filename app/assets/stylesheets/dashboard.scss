@@ -11,17 +11,14 @@
 }
 #remote-body{
 	margin-top:50px;
-	height:400px;
 	.side{
-		height:400px;
 		background-color:gray;
 	}
 	.main-content{
-		height:400px;
 	}
 }
 /*Missions*/
-.missions{
+.outer-box{
 	.new-mission{
 		margin-top:30px;
 		margin-bottom:30px;
@@ -37,7 +34,6 @@
 			font-size:18;
 		}
 	}
-
 }
 /*end*/
 /*tasks*/

@@ -9,7 +9,6 @@ class DashboardController < ApplicationController
   end
   def handler
     request = params[:request].to_sym 
-   
     if request 
       case request 
         when :tasks then self.send(request)
@@ -20,12 +19,10 @@ class DashboardController < ApplicationController
           self.send(:malieci_request)
       end
     end
-
     respond_to do |format|
       format.js {render "#{params[:request]}.js.erb"}
     end
   end
-
   def report
     render text: 'This feature is currently unavailable'
   end
@@ -43,7 +40,9 @@ class DashboardController < ApplicationController
 
   end
   def contact
-    @contacts = current_user.contact_items
+    respond_to do |format|
+      format.js
+    end
   end
   def payments
     respond_to do |format|

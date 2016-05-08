@@ -1,5 +1,5 @@
 
-var content = '<div class="outer-box">	\
+var content = '<div class="missions">	\
 <div class=" col-lg-2 col-md-2 col-lg-offset-5 col-md-offset-5 new-mission">\
 	<%=link_to "New Missions", new_mission_path, class:"btn btn-success"%>\
 </div>\

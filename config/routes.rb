@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
 
+  get 'contact_items/create'
+
+  get 'contact_items/update'
+
+  get 'contact_items/delete'
+
   get 'tasks/index'
   get '/report' => 'dashboard#report', as: 'report' 
   root 'dashboard#index'
@@ -13,6 +19,7 @@ Rails.application.routes.draw do
   post 'missions/:id/add-users' => 'missions#add_users', as:'mission_add_users'
   post 'task-toggling' => 'tasks#accomplished'
   post 'dashboard/handler' => "dashboard#handler"
+  post 'contact/add-user' => 'contact_items#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

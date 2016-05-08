@@ -16,7 +16,7 @@ class Mission < ActiveRecord::Base
 		end
 	end
 	def admin
-		@admin ||= Profile.find(profile_id).user
+		@admin = Profile.find(profile_id).user
 	end
 	def unify
 		users = self.users.uniq
